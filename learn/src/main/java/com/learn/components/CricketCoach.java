@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 //@Primary
 public class CricketCoach implements Coach {
-    public CricketCoach() {
-        System.out.println("CricketCoach");
-    }
+//    public CricketCoach() {
+//        System.out.println("CricketCoach");
+//    }
 
     @Override
     public String getDailyWork() {

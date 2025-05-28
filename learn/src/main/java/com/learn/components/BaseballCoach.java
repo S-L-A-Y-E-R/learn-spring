@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 //@Lazy
 //@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class BaseballCoach implements Coach {
-    public BaseballCoach() {
-        System.out.println("BaseballCoach");
-    }
+//    public BaseballCoach() {
+//        System.out.println("BaseballCoach");
+//    }
 
     @Override
     public String getDailyWork() {
