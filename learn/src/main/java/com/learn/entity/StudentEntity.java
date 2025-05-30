@@ -60,8 +60,8 @@ public class StudentEntity {
     @Override
     public String toString() {
         return "StudentEntity{" +
-               "email='" + email + '\'' +
-               ", id=" + id +
+               "id='" + id + '\'' +
+               ", email=" + email +
                ", first_name='" + first_name + '\'' +
                ", last_name='" + last_name + '\'' +
                '}';
