@@ -33,7 +33,27 @@ public class StudentDAOImplementation implements StudentDAO{
 
     @Override
     public List<StudentEntity> findAll() {
-        TypedQuery<StudentEntity> query = entityManager.createQuery("from StudentEntity ",StudentEntity.class);
+        TypedQuery<StudentEntity> query = entityManager.createQuery("from StudentEntity order by last_name asc",StudentEntity.class);
         return query.getResultList();
+    }
+
+    @Override
+    public List<StudentEntity> findByLastName(String lastName) {
+        TypedQuery<StudentEntity> query = entityManager.createQuery("from StudentEntity where last_name = :lName",StudentEntity.class);
+        query.setParameter("lName",lastName);
+        return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void updateStudent(StudentEntity studentEntity) {
+        entityManager.merge(studentEntity);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudent(int id) {
+        StudentEntity studentEntity = entityManager.find(StudentEntity.class,id);
+        entityManager.remove(studentEntity);
     }
 }

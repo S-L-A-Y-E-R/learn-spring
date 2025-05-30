@@ -10,4 +10,10 @@ public interface StudentDAO {
     StudentEntity findById(int id);
 
     List<StudentEntity> findAll();
+
+    List<StudentEntity> findByLastName(String lastName);
+
+    void updateStudent(StudentEntity studentEntity);
+
+    void deleteStudent(int id);
 }
