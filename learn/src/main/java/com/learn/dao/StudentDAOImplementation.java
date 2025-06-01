@@ -33,7 +33,7 @@ public class StudentDAOImplementation implements StudentDAO{
 
     @Override
     public List<StudentEntity> findAll() {
-        TypedQuery<StudentEntity> query = entityManager.createQuery("from StudentEntity order by last_name asc",StudentEntity.class);
+        TypedQuery<StudentEntity> query = entityManager.createQuery("from StudentEntity",StudentEntity.class);
         return query.getResultList();
     }
 
