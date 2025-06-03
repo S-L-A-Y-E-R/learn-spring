@@ -1,44 +1,49 @@
-package com.learn.service;
-
-import com.learn.entity.Employee;
-import com.learn.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-@Service
-public class EmployeeServiceImplementation implements EmployeeService{
-    EmployeeRepository employeeRepository;
-
-    @Autowired
-    public EmployeeServiceImplementation(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
-
-
-    @Override
-    public List<Employee> findAll() {
-        return employeeRepository.findAllEmployees();
-    }
-
-    @Override
-    public Employee findEmployeeById(int employeeId) {
-        return employeeRepository.findEmployeeById(employeeId);
-    }
-
-    @Override
-    public void SaveEmployee(Employee employee) {
-        employeeRepository.SaveEmployee(employee);
-    }
-
-    @Override
-    public void deleteEmployee(int employeeId) {
-        employeeRepository.deleteEmployee(employeeId);
-    }
-
-    @Override
-    public void updateEmployee(Employee employee) {
-        employeeRepository.updateEmployee(employee);
-    }
-}
+//package com.learn.service;
+//
+//import com.learn.entity.Employee;
+//import com.learn.repository.EmployeeJpaRepository;
+//import jakarta.transaction.Transactional;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import java.util.List;
+//import java.util.Optional;
+//
+//@Service
+//public class EmployeeServiceImplementation implements EmployeeService{
+//    EmployeeJpaRepository employeeJpaRepository;
+//
+//    @Autowired
+//    public EmployeeServiceImplementation(EmployeeJpaRepository employeeJpaRepository) {
+//        this.employeeJpaRepository = employeeJpaRepository;
+//    }
+//
+//
+//    @Override
+//    public List<Employee> findAll() {
+//        return employeeJpaRepository.findAll();
+//    }
+//
+//    @Override
+//    public Optional<Employee> findEmployeeById(int employeeId) {
+//        return employeeJpaRepository.findById(employeeId);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public Employee SaveEmployee(Employee employee) {
+//        return employeeJpaRepository.save(employee);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public void deleteEmployee(int employeeId) {
+//        employeeJpaRepository.deleteById(employeeId);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public Employee updateEmployee(Employee employee) {
+//        return employeeJpaRepository.save(employee);
+//    }
+//}

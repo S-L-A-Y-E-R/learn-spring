@@ -4,6 +4,7 @@ import com.learn.dao.EmployeeDAO;
 import com.learn.entity.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,8 +31,8 @@ public class EmployeeRepository implements EmployeeDAO {
     }
 
     @Override
-    public void SaveEmployee(Employee employee) {
-        entityManager.persist(employee);
+    public Employee SaveEmployee(Employee employee) {
+        return entityManager.merge(employee);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class EmployeeRepository implements EmployeeDAO {
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
-        entityManager.merge(employee);
+    public Employee updateEmployee(Employee employee) {
+        return entityManager.merge(employee);
     }
 }
