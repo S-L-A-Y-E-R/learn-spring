@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/processForm}" method="post" th:object="${name}">
+        <label>
+            <input name="firstName" type="text" placeholder="what's your first name ?" th:field="*{firstName}"/>
+        </label>
+        <label>
+            <input name="lastName" type="text" placeholder="what's your last name ?" th:field="*{lastName}"/>
+        </label>
+        <label>
+            <input type="submit" name="submit"/>
+        </label>
+    </form>
+</body>
+</html>
