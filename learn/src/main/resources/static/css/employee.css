@@ -1,0 +1,130 @@
+header{
+    font-weight: bold;
+    font-size: 24px;
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+main{
+    padding: 15px;
+}
+
+main button{
+    color: white;
+    background-color: cornflowerblue;
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+thead {
+    background-color: gray;
+    color: white;
+}
+
+thead th,
+tbody td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+tbody tr {
+    background-color: #eee;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+.update{
+    color: white;
+    background-color: gray;
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.delete{
+    color: white;
+    background-color: red;
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Form styling for add-form.html */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+form button {
+    background-color: #6c757d;
+    color: white;
+    width: 200px;
+    cursor: pointer;
+}
+
+form hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
