@@ -15,35 +15,38 @@ import org.springframework.security.web.SecurityFilterChain;
 import javax.sql.DataSource;
 
 @Configuration
-public class DemoSecurityConfig{
+public class DemoSecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http){
+    public SecurityFilterChain filterChain(HttpSecurity http) {
         try {
-            http.authorizeHttpRequests(configurer->configurer.
-                    requestMatchers(HttpMethod.GET,"/managers").hasRole("MANAGER").
-                    requestMatchers(HttpMethod.GET,"/").hasAnyRole("MANAGER","EMPLOYEE","ADMIN").
-                    anyRequest().authenticated()
-        ).formLogin(form->
-                        form.loginPage("/login").
-                                loginProcessingUrl("/authenticateTheUser").permitAll()
-                    ).logout(LogoutConfigurer::permitAll);
+            http.authorizeHttpRequests(configurer -> configurer.
+                            requestMatchers(HttpMethod.GET, "/managers").hasRole("MANAGER").
+                            requestMatchers(HttpMethod.GET, "/").hasAnyRole("MANAGER", "EMPLOYEE", "ADMIN").
+                            anyRequest().authenticated()
+                    ).formLogin(form ->
+                            form.loginPage("/login").
+                                    loginProcessingUrl("/authenticateTheUser").permitAll()
+                    ).logout(LogoutConfigurer::permitAll)
+                    .exceptionHandling(configurer -> configurer.accessDeniedPage("/access-denied"));
 
             http.csrf(AbstractHttpConfigurer::disable);
 
             http.httpBasic(Customizer.withDefaults());
 
-            return  http.build();
+            return http.build();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     @Bean
-    public UserDetailsManager userDetailsManager(DataSource source){
+    public UserDetailsManager userDetailsManager(DataSource source) {
         JdbcUserDetailsManager manager = new JdbcUserDetailsManager(source);
-        manager.setUsersByUsernameQuery("select user_name,password,active from members where user_name = ?");
-        manager.setAuthoritiesByUsernameQuery("select user_name,role from roles where user_name = ?");
+        manager.setUsersByUsernameQuery(
+                "select user_name,password,active from members where user_name = ?");
+        manager.setAuthoritiesByUsernameQuery(
+                "select user_name,role from roles where user_name = ?");
         return manager;
     }
 }

@@ -11,11 +11,6 @@ public class MvcSecurityController {
 
     @GetMapping("/")
     public String homePage(Model model){
-        model.addAttribute("role", SecurityContextHolder.getContext()
-                        .getAuthentication().getAuthorities().stream().
-                        map(GrantedAuthority::getAuthority).
-                        findFirst().orElse("")
-                );
         return "home-page";
     }
 
@@ -27,6 +22,11 @@ public class MvcSecurityController {
     @GetMapping("/login")
     public String login(){
         return "login-page";
+    }
+
+    @GetMapping("/access-denied")
+    public String accessDeniedHandler(){
+        return "access-denied";
     }
 
 }

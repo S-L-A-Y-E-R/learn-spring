@@ -6,7 +6,7 @@
 <body>
     <p>Home Page</p>
     <p>Welcome <span sec:authentication="principal.username"></span></p>
-    <a th:href="@{/managers}" th:if="${role == 'ROLE_MANAGER'}">Go to the managers' page</a>
+    <a th:href="@{/managers}" sec:authorize="hasRole('MANAGER')">Go to the managers' page</a>
     <br>
     <a th:href="@{/logout}">Logout</a>
 </body>
