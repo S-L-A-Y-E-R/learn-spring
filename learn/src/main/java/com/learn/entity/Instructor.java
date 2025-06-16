@@ -2,6 +2,9 @@ package com.learn.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "instructor")
 public class Instructor {
@@ -22,6 +25,9 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_details_id")
     private InstructorDetails instructorDetails;
+
+    @OneToMany(mappedBy = "instructor",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Course> courses;
 
     public Instructor() {
     }
@@ -72,6 +78,21 @@ public class Instructor {
         this.lastName = lastName;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    // perform the bidirectional
+    public void addCourse(Course course){
+        if(courses == null) courses=new ArrayList<>();
+        courses.add(course);
+        course.setInstructor(this);
+    }
+
     @Override
     public String toString() {
         return "Instructor{" +
@@ -80,6 +101,7 @@ public class Instructor {
                ", lastName='" + lastName + '\'' +
                ", email='" + email + '\'' +
                ", instructorDetails=" + instructorDetails +
+               ", courses=" + courses +
                '}';
     }
 }
