@@ -2,6 +2,9 @@ package com.learn.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "course")
 public class Course {
@@ -14,8 +17,19 @@ public class Course {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name="instructor_id")
+    @JoinColumn(name = "instructor_id")
     private Instructor instructor;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+            CascadeType.REFRESH})
+    @JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private List<Student> students;
 
     // Constructors
     public Course() {
@@ -47,6 +61,11 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public void addReview(Review review) {
+        if (reviews == null) reviews = new ArrayList<>();
+        reviews.add(review);
     }
 
     @Override
