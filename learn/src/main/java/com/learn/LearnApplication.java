@@ -1,5 +1,6 @@
 package com.learn;
 
+import com.learn.dao.AccountDao;
 import com.learn.dao.StudentDAO;
 import com.learn.entity.StudentEntity;
 import org.springframework.boot.CommandLineRunner;
@@ -15,10 +16,14 @@ public class LearnApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
+    public CommandLineRunner commandLineRunner(AccountDao accountDao){
         return runner->{
-
+                addCAccountDemo(accountDao);
         };
+    }
+
+    public void addCAccountDemo(AccountDao accountDao){
+        accountDao.addAccount();
     }
 
     public static void createStudent(StudentDAO studentDAO){
