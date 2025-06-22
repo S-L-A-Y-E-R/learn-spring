@@ -23,7 +23,9 @@ public class LearnApplication {
     }
 
     public void addCAccountDemo(AccountDao accountDao){
-        accountDao.addAccount();
+        accountDao.addAccount("Misr");
+
+        accountDao.retrieveAccounts();
     }
 
     public static void createStudent(StudentDAO studentDAO){

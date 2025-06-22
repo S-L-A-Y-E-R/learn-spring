@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Order(2)
 public class DemoCloudLogAspect {
 
-    @Before("com.learn.components.DemoLoggingAspect.doBeforeExpression() && " +
-            "!(com.learn.components.DemoLoggingAspect.getter() || com.learn.components.DemoLoggingAspect.setter())")
+    @Before("com.learn.components.DemoPointcutExpressions.doBeforeExpression() && " +
+            "!(com.learn.components.DemoPointcutExpressions.getter() || com.learn.components.DemoPointcutExpressions.setter())")
     public void DemoLogCloud() {
         System.out.println("Doing some cloud staff");
     }
