@@ -2,17 +2,15 @@ package com.learn.dao;
 
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class AccountDaoImpl implements AccountDao{
     @Override
-    public void addAccount(String name) {
+    public void addAccount(String name){
         System.out.println("Adding account..."+name);
+        throw new RuntimeException("Error adding an account");
     }
 
     @Override
-    public List<String> retrieveAccounts() {
-        return List.of("misr","qnb","cib");
+    public void retrieveAccounts() {
     }
 }

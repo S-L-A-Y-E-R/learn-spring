@@ -23,7 +23,7 @@ public class LearnApplication {
     }
 
     public void addCAccountDemo(AccountDao accountDao){
-        accountDao.addAccount("Misr");
+        try{accountDao.addAccount("Misr");}catch (Exception ignored){}
 
         accountDao.retrieveAccounts();
     }

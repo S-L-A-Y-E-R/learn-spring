@@ -14,4 +14,13 @@ public class DemoPointcutExpressions {
 
     @Pointcut("execution(* *Accounts(..))")
     public void doAfterExpression(){}
+
+    @Pointcut("execution(* *Account(..))")
+    public void doAfterThrowingExpression(){}
+
+    @Pointcut("execution(* *Account(..))")
+    public void doAfterFinallyExpression(){}
+
+    @Pointcut("execution(* *Account(..))")
+    public void doAroundExpression(){}
 }
